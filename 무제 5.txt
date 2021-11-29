@@ -1,0 +1,47 @@
+LOAD DATA INFILE '~/jeju/rest1.csv'
+INTO TABLE restaurant
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+,index,name,upjong,address_x,category,평점_건수,평점_합계,평점_평균,평점_표준편차,Latitude,Longitude,상태
+name,upjong,address,category,rat_count,rat_avg,Latitude,Longitude
+
+create TABLE restaurant (
+id INT NOT NULL,
+name VARCHAR(130) NOT NULL,
+upjong VARCHAR(100) NOT NULL,
+address VARCHAR(100) NOT NULL,
+category VARCHAR(100),
+rating_count DECIMAL(10,2),
+rating_average DECIMAL(10,2),
+Latitude DECIMAL(13,10),
+Longtitude DECIMAL(13,10),
+PRIMARY KEY (id)
+);
+
+
+LOAD DATA INFILE '~/jeju/sights1.csv'
+INTO TABLE sights
+FIELDS TERMINATED BY '/'
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+
+,name,keyword_x,content_x,tags_x,address_x,address1_x,content_y,tags_y,Latitude,Longitude
+
+create TABLE sights (
+id INT NOT NULL,
+name VARCHAR(5000),
+keyword VARCHAR(100),
+content VARCHAR(1000),
+tags_x VARCHAR(1000),
+address_x VARCHAR(500),
+address1_x VARCHAR(100),
+tags_y VARCHAR(1000),
+Latitude DECIMAL(13,10),
+Longtitude DECIMAL(13,10),
+PRIMARY KEY (id)
+);

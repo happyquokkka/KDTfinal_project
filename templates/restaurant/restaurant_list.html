@@ -1,0 +1,55 @@
+<script>
+    var attractions = JSON.parse("{{ attractionJson|escapejs }}");
+    var div = document.createElement("div");
+    for (var i = 0; i < Object.keys(attractions).length; i++) {
+      var content = {
+        name: attractions[i].name,
+        address: attractions[i].address,
+        OMscore: attractions[i].OMscore,
+      }
+      var result =                
+        '<div class="page-body breadcrumb-page" style="max-height:300px">'+
+        '<div id="result" class="card" style="border:0;">'+
+            '<div class="card-block caption-breadcrumb">'+
+                '<div class="breadcrumb-header">'+
+                    '<h4 style="font-family:bombaram; color:#4A5932;">' + content.name + '</h3>' +
+                    '<h5 style="font-family: kyungibatang;">' + content.address + '</h4>' +
+                '</div>'+
+                '<div class="page-header-breadcrumb">'+
+                    '<ul class="breadcrumb-title">'+
+                        '<h5 class="breadcrumb-item" style="font-family: kyungibatang;">' + 'OMscore : ' + content.OMscore.substring(0,4) + '점' +'</h4>' +
+                    '</ul>'+
+                '</div>'+
+            '</div>'+
+        '</div>'+
+    '</div>';
+
+    $('#result').pagination({
+        dataSource: [1, 2],
+        pageSize: 5,
+        showPrevious: false,
+        showNext: false,
+        callback: function(data, pagination) {
+            // template method of yourself
+            var html = template(data);
+            dataContainer.html(html);
+        }
+    })
+    document.write(result)
+    //div.append(result);
+    }
+    //document.write(div);
+    //console.log(document.querySelector('.restaurant_container'))
+</script>
+
+<h5>
+    {% if restaurants.has_previous %}
+            <a href='?page={{restaurants.number|add:-1}}'>Previous</a>
+        {% endif %}
+
+    Page {{ restaurants.number }} of {{ restaurants.paginator.num_pages }}
+
+    {% if restaurants.has_next%}
+            <a href='?page={{restaurants.number|add:+1}}'>Next</a>
+    {% endif %}
+</h5>

@@ -1,0 +1,20 @@
+LOAD DATA INFILE '~/jeju/rest.csv'
+INTO TABLE restaurant
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n';
+(,index,name,upjong,address_x,category,평점_건수,평점_합계,평점_평균,평점_표준편차,Latitude,Longitude,상태)
+SET id = @id,
+	name = @name,
+	upjong = @upjong,
+	rating_average = @rating_average
+	address_X = @address_X;
+
+
+update user set password=password(0000)
+ where user=root; 
+
+
+SHOW VARIABLES LIKE "secure_file_priv"
+
+출처: https://sungwookkang.com/1328 [Data Science Lab]

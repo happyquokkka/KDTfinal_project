@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>
+    어디가맨
+  </title>
+
+  <!-- range selector slider style -->
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.0/css/ion.rangeSlider.min.css" />
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}"/>
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css"/>
+  <!-- responsive style -->
+  <link href="{% static 'css/responsive.css' %}" rel="stylesheet" type="text/css"/>
+
+
+</head>
+
+<body>
+
+  <div class="hero_area">
+
+    <!-- header section strats -->
+
+    <!-- 사용자의 위치정보 사용 동의 받는 알림창 -->
+
+    <script>
+        var result = confirm('실시간 위치정보를 사용하는데 동의하십니까?');
+        if(result) {
+          alert("어디가맨 서비스를 이용하실 수 있습니다.");
+          }else{
+          alert("어디가맨 서비스를 이용하실 수 없습니다.");
+          location.replace('sorry');
+        }
+    </script>
+
+    <script type="text/javascript">
+
+    function dis(){
+        console.log($("#dis_container").css('display'))
+        if($('#dis_container').css('display') == 'none'){
+        $('#dis_container').show();
+    }else{
+        $('#dis_container').hide();
+    }
+    }
+    </script>
+
+    <!-- header section -->
+
+    <header class="header_section">
+      <div class="container" id="container_header">
+          <div class="header_menu">
+            <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
+            <a class="navbar-brand" href="http://127.0.0.1:8000/" style="padding-left:20px;">
+            <h2 style="font-family: binggrae2"> 어디가맨 </h2>
+          </a>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav  ">
+                <li class="nav-item active">
+                  <a class="nav-link" href="http://127.0.0.1:8000/" style="font-family: binggrae2">Home
+                    <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#bookTrip" style="font-family: binggrae2">
+                   어디 감수꽈?
+                  </a>
+                </li>
+              </ul>
+              <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
+                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
+              </form>
+            </div>
+            <div class="quote_btn-container ml-0 ml-lg-4 d-flex justify-content-center">
+              <a href="" style="font-family:binggrae2">
+                회원가입
+              </a>
+            </div>
+          </div>
+        </nav>
+        </div>
+      </div>
+    </header>
+
+
+
+  <!-- trip section -->
+
+  <section class="trip_section layout_padding" id="bookTrip">
+    <div class="container">
+     <!-- <div class="heading_container">
+        <h2 style="font-family: uggro" style="color:black">
+          어디 감수꽈?
+        </h2>
+          <p>
+         aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+        </p>-->
+      </div>
+    <div class="container " >
+      <!-- 어디가맨 지수 설명하는 div -->
+      <!-- <div class="eodigamen_score">
+        어디가맨 지수란?<br>
+        네이버 맵플레이스 평점과 사용자 위치
+      </div> -->
+
+      <!-- 마우스 hover OR onclick 시 가상시나리오 뜨게끔! -->
+      <!-- <div id="" -->
+
+      <div id="eodigamen_score_info_container" style="border: 3.5px solid #69AFBF; width: 100%; margin-bottom:50px; margin-top:50px; overflow:hidden;">
+                    <div id="eodigamen_info" style="padding: 10px;">
+                      <img src="{% static 'images/strawhat.png' %}" style="width:65px; height:40px; margin-bottom:10px; padding-left:10px;">
+                      <p><button id="exp" onclick="dis()" style="background-color:transparent; border:none; outline:none; overflow:hidden;">
+                        <h3 style="font-family: uggro; color: #404040" >어디가맨 서비스 소개</h3><h3 style="font-family: uggro; color:red;">(CLICK!)</h3></p>
+                      </button>
+                        <div style="display:none; margin-bottom:50px; text-align:center;" id="dis_container">
+                          <img id="dis" src="{% static 'images/어디가맨_시나리오_final.png' %}" style="width:90%; max-height:80%; transform:scale(1.1;"></img>
+                        </div>
+                    </div>
+              </div>
+
+      <div class="box container-bg" style="text-align:center;">
+        <div class="img-box" id="choice" style="margin: 0 auto;">
+          <table>
+          <tbody>
+          <tr>
+          <td>
+          <a href="/search_restaurant">
+            <img src="{% static 'images/restaurant.png' %}" style="max-width:auto; height:auto;"></img>
+          </a>
+          </td>
+          <td>
+          <a href="/search_tourspots">
+            <img src="{% static 'images/tourspot.png' %}" style="max-width:auto; height:auto;"></img>
+          </a>
+          </td>
+          </tr>
+          <!--여기에 내용 수정 -->
+          <tr style="font-family: bombaram">
+            <td><p><br><h4>어디가맨 지수로 추천!</h4><h1>맛집</h1></p></td>
+            <td><p><br><h4>가고 싶은 곳의 특징으로 추천!</h4><h1>관광지</h1></p></td>
+          </tr>
+          </tbody>
+          </table>
+        </div>
+       <!-- <div class="form_container">
+          <form>
+            <div class="form-group">
+              <div class="input-group ">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <img src="{% static 'images/location.png' %}" alt="">
+                  </div>
+                </div>
+                <input type="text" class="form-control" id="inputDestination" placeholder="">
+              </div>
+            </div> -->
+            <!-- <div class="form-group">
+              <div class="input-group ">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <img src="{% static 'images/location.png' %}" alt="">
+                  </div>
+                </div>
+                <input type="text" class="form-control" id="inputLocation" placeholder="All Locations">
+              </div>
+            </div>
+            <div class="form-group ">
+              <div class="input-group ">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <img src="{% static 'images/language.png' %}" alt="">
+                  </div>
+                </div>
+                <select id="inputLanguage" class="form-control">
+                  <option selected>All Language</option>
+                  <option>...</option>
+                </select>
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <img src="{% static 'images/down-arrow.png' %}" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="select_arrow"></div>
+            </div>
+            <div class="form-group">
+              <div class="input-group ">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <img src="{% static 'images/earth.png' %}" alt="">
+                  </div>
+                </div>
+                <input type="text" class="form-control" id="inputLocation" placeholder="All Tour Type">
+              </div>
+            </div> -->
+            <!-- <div class="range_input">
+              <label for="my_range">
+                Select Price Range
+              </label>
+              <div class="form-group ">
+                <input type="text" class="js-range-slider form-control" name="my_range" value="" />
+              </div>
+            </div> -->
+            <!-- <div class="btn-box">
+              <button type="submit" class="" style="font-family: uggro" size="50px">어드레 감디?</button>
+            </div>
+
+          </form> -->
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- end trip section -->
+
+
+
+
+  <!-- info section -->
+
+  <section class="info_section">
+    <div class="info_container">
+      <div class="container" style="text-align:center;">
+        <!-- 맨 하단 footer box -->
+
+        <!-- <div class="row" style="margin:0 auto;"> -->
+          <div id="info_container">
+            <div class=" col-lg-4" style="font-family: binggrae2; display:inline-block;">
+            <div class="info_nav_link" style="margin-top:15px;">
+              <h5>
+                Useful link
+              </h5>
+              <ul>
+                <li>
+                  <a href="#">
+                    Home
+                  </a>
+                </li>
+                <li>
+                  <a href="#bookTrip">
+                    어디 감수꽈?
+                  </a>
+                </li>
+              </ul>
+             </div>
+            </div>
+            <div class="col-lg-4" style="font-family: binggrae2; display:inline-block;">
+              <h5>
+                Address
+              </h5>
+              <div class="info_link-box">
+                  <img src="{% static 'images/location2.png' %}" alt="">
+                  <span> 서울특별시 강남구 선릉로 428</span><br>
+                  <img src="{% static 'images/call.png' %}" alt="">
+                  <span>전화번호 : 1544-9001</span>
+               </div>
+            </div>
+          </div>
+        </div>
+        <!-- footer section -->
+        <section class=" footer_section" style="font-family: binggrae2">
+          <p>
+            Copyright &copy; 2021 All Rights Reserved By
+            <a href="https://html.design/">Free
+              Html Templates</a><br><p>
+                Distributed By
+                <a href="https://themewagon.com">Themewagon</a>
+              </p>
+          </p>
+        </section>
+        <!-- footer section -->
+      </div>
+    </div>
+  </section>
+
+  <!-- end info section -->
+
+
+
+  <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/kakaomap_marker.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/gps.js' %}"></script>
+  <!-- range selector slider script -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.0/js/ion.rangeSlider.min.js"></script>
+
+
+
+
+
+
+  <script>
+    $(".js-range-slider").ionRangeSlider({
+      skin: "round",
+      type: "double",
+      min: 200,
+      max: 10000,
+      from: 200,
+      to: 500,
+      grid: true
+    });``
+  </script>
+
+  <script>
+    var container = document.getElementById('map'); // 지도를 담을 영역의 DOM 레퍼런스
+    var options = { // 지도를 생성할 때 필요한 기본 옵션
+    center : new kakao.maps.LatLng(33.507020, 126.492950), // 지도의 중심 좌표
+    level: 2 // 지도의 레벨(확대, 축소 정도)
+};
+
+    var map = new kakao.maps.Map(container, options); // 지도 생성 및 객체 리턴
+  </script>
+
+</body>
+</html>

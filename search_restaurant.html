@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>
+    혼저 왕 먹읍서
+  </title>
+
+    <style>
+    .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
+    .wrap * {padding: 0;margin: 0;}
+    .wrap .info {width: 286px;height: 120px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
+    .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
+    .info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
+    .info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
+    .info .close:hover {cursor: pointer;}
+    .info .body {position: relative;overflow: hidden;}
+    .info .desc {position: relative;margin: 13px 0 0 90px;height: 75px;}
+    .desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+    .desc .jibun {font-size: 11px;color: #888;margin-top: -2px;}
+    .info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
+    .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
+    .info .link {color: #5085BB;}
+
+    .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
+    .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
+    .map_wrap {position:relative;width:100%;height:500px;}
+#menu_wrap {position:absolute;top:0;left:0;bottom:0;width:250px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
+    .bg_white {background:#fff;}
+
+    .info-title {
+    display: block;
+    background: #50627F;
+    color: #fff;
+    text-align: center;
+    height: 24px;
+    line-height:22px;
+    border-radius:4px;
+    padding:0px 10px;
+}
+    </style>
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.0/css/ion.rangeSlider.min.css" />
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}"/>
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css"/>
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css"/>
+  <!-- responsive style -->
+  <link href="{% static 'css/responsive.css' %}" rel="stylesheet" type="text/css"/>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/list_style.css' %}">
+
+
+</head>
+
+<body>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bcd1b346af0773ea936fc21184d0fa9f"></script>
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container" id="container_header">
+          <div class="header_menu">
+          <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
+          <a class="navbar-brand" href="http://127.0.0.1:8000/" style="padding-left:20px;">
+            <h2 style="font-family: binggrae2">
+              어디가맨
+            </h2>
+          </a>
+          <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button> -->
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav  ">
+                <li class="nav-item active">
+                  <a class="nav-link" href="http://127.0.0.1:8000/" style="font-family: binggrae2">Home
+                    <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#bookTrip" style="font-family: binggrae2">
+                   어디 감수꽈?
+                  </a>
+                </li>
+              </ul>
+
+              <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
+                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
+              </form>
+            </div>
+            <div class="quote_btn-container ml-0 ml-lg-4 d-flex justify-content-center">
+              <a href="" style="font-family:binggrae2">
+                회원가입
+              </a>
+            </div>
+          </div>
+        </nav>
+        </div> <!-- header_menu div 끝 -->
+      </div>
+    </header>
+  </div>
+
+
+
+  <!-- 식당 정보 -->
+
+  <div id="rest_wrap" style="max-width: 1140px; height:800px; margin:0 auto; margin-top:100px;"> <!-- 전체 식당 정보와 지도를 감싸는 div -->
+       <div id="eodigamen_score_info_container" style="border: 2.5px solid darkkhaki; width: 100%; margin-bottom:50px;">
+                    <div id="eodigamen_info" style="padding: 10px;">
+                      <img src="{% static 'images/strawhat.png' %}" style="width:65px; height:40px;">
+                      <p><h3 style="font-family: uggro">어디가맨 지수(OM score)?</h3></p>
+                        <h4 style="font-family: kyungibatang">포털사이트 평점과 리뷰 개수, 식당과의 거리를 고려한 <span style="font-weight:bold">어디가맨만의 점수</span></h4>
+                    </div>
+              </div>
+      <div id="rest_info"> <!-- 식당 정보를 담고 있는 div -->
+
+
+          <div class="page-wrapper"  style="float:left;">
+
+                <!-- Page-body start -->
+                <!-- 여기서부터 for문 돌리기 -->
+                <div class="page-body breadcrumb-page" style="padding-left: 150px;">
+
+                    <!-- Caption Breadcrumb card start -->
+                    <div class="card" style="border:0;">
+                        <div class="card-block caption-breadcrumb" style="height:70px;">
+                            <div class="breadcrumb-header">
+                                <h3 style="font-family:bombaram; color:#4A5932;">1. 공항뚝배기 제주공항본점</h3>
+                                <h4 style="font-family: kyungibatang;"><img src="{% static 'images/strawhat.png' %}" style="width:30px; height:20px;">&nbsp;4.89</h4>
+                            </div>
+                            <div class="page-header-breadcrumb">
+                                <ul class="breadcrumb-title">
+                                    <h4 class="breadcrumb-item" style="font-family: kyungibatang;">제주특별자치도 제주시 연삼로 31</h4>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+          </div>
+      </div>
+
+      <!-- 식당 정보를 카카오맵에 띄우기 + 마커 -->
+      <div id="rest_map_container">
+          <div id="map" style="width:50%; height:700px; float:right; display:inline-block;"></div>
+          <script>
+             var mapContainer = document.getElementById('map'), // 지도의 중심좌표
+                mapOption = {
+                    center: new kakao.maps.LatLng(33.948175, 126.316004), // 지도의 중심좌표
+                    // 지도의 중심 좌표에는 마커가 한 눈에 보일 수 있는 위치의 위도, 경도를 넣어주세요!
+                    level: 7 // 지도의 확대 레벨 (숫자가 클 수록 축소됩니다!)
+                };
+
+            var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+
+
+            var attractions = JSON.parse("{{ attractionJson|escapejs }}");
+            //console.log(attractions)
+
+
+            var positions = [];
+            for (var i = 0; i < Object.keys(attractions).length; i++) {
+                // console.log(attractions[i])
+              var content = {
+                name: attractions[i].name,
+                latlng: new kakao.maps.LatLng(attractions[i].Longtitude, attractions[i].Latitude),
+                  // 경도, 위도 순서로 넣음!
+                address: attractions[i].address,
+                upjong: attractions[i].upjong,
+                OMscore: attractions[i].OMscore,
+              }
+              positions.push(content);
+            };
+            //console.log(positions);
+
+
+
+
+        // 마커 이미지의 이미지 주소입니다
+        var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+        for (var i = 0; i < positions.length; i++) {
+            // console.log(positions[i].latlng.La,positions[i].latlng.Ma)
+            // 마커 이미지의 이미지 크기 입니다
+            var imageSize = new kakao.maps.Size(24, 35);
+            // 마커 이미지를 생성합니다
+            var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+            // 마커를 생성합니다
+            var marker = new kakao.maps.Marker({
+                map: map, // 마커를 표시할 지도
+                position: new kakao.maps.LatLng(positions[i].latlng.La,positions[i].latlng.Ma), // 마커를 표시할 위치
+                name: positions[i].name, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+                image: markerImage, // 마커 이미지
+                title: positions[i].name
+            })
+            // console.log(marker)
+            marker.setMap(map);
+
+
+            // 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
+            // kakao.maps.event.addListener(marker, 'click', function() {
+            var overlay = new kakao.maps.CustomOverlay({
+                content: '<div class="wrap" '+'title='+i +'>' +
+                    '    <div class="info">' +
+                    '        <div class="title">' + positions[i].name + '</div>' +
+                    '        <div className="close" onClick="closeOverlay(this)">닫기</div> '+
+                    '        <div class="body">'+
+                    '            <div class="desc">' +
+                    '                <div class="ellipsis">' + positions[i].address + '</div>' +
+                    '                <div class="jibun ellipsis">' + positions[i].upjong + '</div>' +
+                    '               <div class="omscore ellipsis">' + positions[i].OMscore + '</div>' +
+                    '            </div>' +
+                    '        </div>' +
+                    '    </div>' +
+                    '</div>',
+                map: map,
+                position: marker.getPosition()
+            });
+
+
+            kakao.maps.event.addListener(marker, 'click', function() {
+                // console.log(overlay);
+                //overlay.setMap(map);
+                var myoverlay = document.querySelectorAll('.wrap > .info > .title')
+                var target = this.Gb;
+
+                for (var i = 0; i < myoverlay.length; i++){
+                    if (myoverlay[i].textContent == target) {
+                        myoverlay[i].parentNode.parentNode.style.display='block'
+                    }
+                }
+            });
+/*
+
+             kakao.maps.event.addListener(marker, 'click', function() {
+            overlay.setMap(map);
+            });
+
+            kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
+            overlay.setMap(null)
+            });
+*/
+
+
+            var iwContent = '<div style="text-align:center;" class="info-title">현재 위치</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+            iwPosition = new kakao.maps.Marker({
+                    map: map, // 마커를 표시할 지도
+                    position: new kakao.maps.LatLng(33.948175, 126.316004), // 마커를 표시할 위치
+                    name: positions[i].name, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+                    image: new kakao.maps.MarkerImage('https://png.pngitem.com/pimgs/s/111-1114675_user-login-person-man-enter-person-login-icon.png', new kakao.maps.Size(40, 39)) // 마커 이미지
+                })
+
+            //new kakao.maps.LatLng(33.945223, 126.320236); //인포윈도우 표시 위치입니다
+
+            // 인포윈도우를 생성합니다
+            var infowindow = new kakao.maps.InfoWindow({
+                position : iwPosition,
+                content : iwContent
+            });
+
+            // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
+            infowindow.open(map, iwPosition);
+
+
+        };
+
+
+            function closeOverlay(overay) {
+                overay.parentNode.parentNode.style.display = "none";
+                //overay.setMap(null);
+            }
+
+            var infoTitle = document.querySelectorAll('.info-title');
+            infoTitle.forEach(function(e) {
+                var w = e.offsetWidth + 10;
+                var ml = w/2;
+                e.parentElement.style.top = "82px";
+                e.parentElement.style.left = "50%";
+                e.parentElement.style.marginLeft = -ml+"px";
+                e.parentElement.style.width = w+"px";
+                e.parentElement.previousSibling.style.display = "none";
+                e.parentElement.parentElement.style.border = "0px";
+                e.parentElement.parentElement.style.background = "unset";
+            });
+
+
+
+        // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
+        // kakao.maps.event.addListener(marker, 'click', function() {
+        //     overlay.setMap(map);
+        // });
+
+        // 커스텀 오버레이를 닫기 위해 호출되는 함수입니다
+
+
+
+/*
+        (function(marker, place) {
+          // 마크 클릭 시
+
+            kakao.maps.event.addListener(marker, 'click', function() {
+                for (var i = 0; i < positions.length; i++) {
+                    var overlay = new kakao.maps.CustomOverlay({
+                        // 오버레이에 띄울 내용
+                        content: '<div class="wrap">' +
+                            '    <div class="info">' +
+                            '        <div class="title">' + positions[i].name + '</div>' +
+                            '        <div class="body">' +
+                            '            <div class="desc">' +
+                            '                <div class="ellipsis">' + positions[i].address + '</div>' +
+                            '                <div class="jibun ellipsis">' + positions[i].upjong + '</div>' +
+                            '               <div class="omscore ellipsis">' + positions[i].OMscore + '</div>' +
+                            '            </div>' +
+                            '        </div>' +
+                            '    </div>' +
+                            '</div>',
+                        map: map,
+                        position: marker.getPosition()
+                    });
+                }
+
+
+
+            // 아무데나 클릭하게되면 overlay를 끄기
+            kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
+              overlay.setMap(null)
+            })
+            console.log(overlay);
+            overlay.setMap(map);
+          })
+        })(marker, positions)
+*/
+
+
+        </script>
+      </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- 밑은 원래 페이지 레이아웃 및 디자인 -->
+
+  <!-- <section class="trip_section layout_padding" id="bookTrip">
+  <p>
+    <div class="container">
+      <div class="heading_container" style="padding-top: 500px;">
+        <h2 style="font-family: uggro" style="color:black">
+          현재 위치를 입력해주세요!
+        </h2>
+      </div>
+    </div></p> -->
+
+    <!-- 사용자에게 주소 입력하게 함 -->
+      <!-- <div class="container " >
+      <div class="box container-bg">
+        <div class="form_container">
+          <form>
+            <div class="form-group">
+              <div class="input-group" style="text-align: center;">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <img src="{% static 'images/location.png' %}" alt="">
+                  </div>
+                </div>
+                <div id="form_rest">
+                <form action="result_rest" method="GET">
+                {% csrf_token %}
+                <input name="input" type="text" class="form-control" id="inputDestination" placeholder="당신의 위치를 입력하세요" style="font-family: binggrae2">
+                <input type="submit" value="어드레 감디?" style="font-family: uggro" size="50px">
+                </form>
+                </div> -->
+                  <!-- 확인 버튼 -->
+      <!--        </div>
+              <br><p>
+              <div class="btn-box">
+                 <input type="submit" value="어드레 감디?" onclick="location.href='result_rest.html'" style="font-family: uggro" size="50px"></p>
+               </div>
+          </div>
+         </form>
+      </div>
+      </div>
+    </div> -->
+
+    <!-- 2안 사용자가 접속한 ip의 실시간 gps 가져오게 함 -->
+        <!-- 카카오맵 API 연동하여 카카오맵 띄우기 -->
+            <!-- <br><br><p><div id="map" style="width:600px;height:500px; margin:0 auto;"></p></div> -->
+
+      <!-- 사용자의 현재 위치 가져오는 버튼 -->
+      <!-- <button type="button" id="location" style="text-align: center;">현재위치</button> -->
+
+  <!-- </section> -->
+
+
+ <!-- info section -->
+
+<!-- <section class="info_section">-->
+<!--    <div class="info_container" style="padding-top:400px;" >-->
+<!--      <div class="container" style="text-align:center;">-->
+<!--        &lt;!&ndash; 맨 하단 footer box &ndash;&gt;-->
+
+<!--        &lt;!&ndash; <div class="row" style="margin:0 auto;"> &ndash;&gt;-->
+<!--          <div id="info_container">-->
+<!--            <div class=" col-lg-4" style="font-family: binggrae2; display:inline-block;">-->
+<!--&lt;!&ndash;            <div class="info_nav_link" style="margin-top:15px;">&ndash;&gt;-->
+<!--&lt;!&ndash;              <h5>&ndash;&gt;-->
+<!--&lt;!&ndash;                Useful link&ndash;&gt;-->
+<!--&lt;!&ndash;              </h5>&ndash;&gt;-->
+<!--&lt;!&ndash;              <ul>&ndash;&gt;-->
+<!--&lt;!&ndash;                <li>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <a href="#">&ndash;&gt;-->
+<!--&lt;!&ndash;                    Home&ndash;&gt;-->
+<!--&lt;!&ndash;                  </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                </li>&ndash;&gt;-->
+<!--&lt;!&ndash;                <li>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <a href="#bookTrip">&ndash;&gt;-->
+<!--&lt;!&ndash;                    어디 감수꽈?&ndash;&gt;-->
+<!--&lt;!&ndash;                  </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                </li>&ndash;&gt;-->
+<!--&lt;!&ndash;              </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;             </div>&ndash;&gt;-->
+<!--            </div>-->
+<!--&lt;!&ndash;            <div class="col-lg-4" style="font-family: binggrae2; display:inline-block;">&ndash;&gt;-->
+<!--&lt;!&ndash;              <h5>&ndash;&gt;-->
+<!--&lt;!&ndash;                Address&ndash;&gt;-->
+<!--&lt;!&ndash;              </h5>&ndash;&gt;-->
+<!--&lt;!&ndash;              <div class="info_link-box">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <img src="{% static 'images/location2.png' %}" alt="">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <span> 서울특별시 강남구 선릉로 428</span><br>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <img src="{% static 'images/call.png' %}" alt="">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <span>전화번호 : 1544-9001</span>&ndash;&gt;-->
+<!--&lt;!&ndash;               </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; footer section &ndash;&gt;-->
+<!--&lt;!&ndash;        <section class=" footer_section" style="font-family: binggrae2;">&ndash;&gt;-->
+<!--&lt;!&ndash;          <p>&ndash;&gt;-->
+<!--&lt;!&ndash;            Copyright &copy; 2021 All Rights Reserved By&ndash;&gt;-->
+<!--&lt;!&ndash;            <a href="https://html.design/">Free&ndash;&gt;-->
+<!--&lt;!&ndash;              Html Templates</a><br><p>&ndash;&gt;-->
+<!--&lt;!&ndash;                Distributed By&ndash;&gt;-->
+<!--&lt;!&ndash;                <a href="https://themewagon.com">Themewagon</a>&ndash;&gt;-->
+<!--&lt;!&ndash;              </p>&ndash;&gt;-->
+<!--&lt;!&ndash;          </p>&ndash;&gt;-->
+<!--&lt;!&ndash;        </section>&ndash;&gt;-->
+<!--        &lt;!&ndash; footer section &ndash;&gt;-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </section>-->
+
+  <!-- end info section -->
+
+
+
+
+
+  <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/gps.js' %}"></script>
+  <!-- range selector slider script -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.0/js/ion.rangeSlider.min.js"></script>
+
+
+
+
+
+
+
+  <script>
+    $(".js-range-slider").ionRangeSlider({
+      skin: "round",
+      type: "double",
+      min: 200,
+      max: 10000,
+      from: 200,
+      to: 500,
+      grid: true
+    });``
+  </script>
+
+<!--  <script>-->
+<!--    var container = document.getElementById('map'); // 지도를 담을 영역의 DOM 레퍼런스-->
+<!--    var options = { // 지도를 생성할 때 필요한 기본 옵션-->
+<!--    center : new kakao.maps.LatLng(33.507020, 126.492950), // 지도의 중심 좌표-->
+<!--    level: 2 // 지도의 레벨(확대, 축소 정도)-->
+<!--};-->
+
+<!--    var map = new kakao.maps.Map(container, options); // 지도 생성 및 객체 리턴-->
+<!--  </script>-->
+
+</body>
+</html>
